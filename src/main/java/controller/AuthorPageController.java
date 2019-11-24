@@ -2,11 +2,14 @@ package controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
+import model.Main;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -16,22 +19,31 @@ public class AuthorPageController implements Initializable {
     private VBox vBox;
 
     @FXML
-    private ListView<Data> listView;
+    private ListView<BookData> listView;
 
-    ObservableList<Data> Qlist = FXCollections.observableArrayList(displayData());
+    ObservableList<BookData> bookData = FXCollections.observableArrayList(displayBookData());
+
+    @FXML
+    void backAction(ActionEvent event) throws IOException {
+
+        Main.authorStage.close();
+        new Main().openSearchWindow();
+
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        listView.setItems(Qlist);
+        listView.setItems(bookData);
 
     }
 
-    public Data displayData(){
+    public BookData displayBookData(){
 
-        Data data = new Data("Book", "", "ML", "loc1");
+        BookData bookData = new BookData("Book", "", "ML", "loc1");
 
-        return data;
+        return bookData;
 
     }
 }

@@ -43,17 +43,17 @@ public class SearchPageController {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("FieldPage.fxml"));
         AnchorPane pane = loader.load();
         Scene scene = new Scene(pane);
-        Stage fieldStage = new Stage();
-        fieldStage.setScene(scene);
-        fieldStage.show();
+        Main.fieldStage = new Stage();
+        Main.fieldStage.setScene(scene);
+        Main.fieldStage.show();
     }
 
     public void openAuthorWindow() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("AuthorPage.fxml"));
         AnchorPane pane = loader.load();
         Scene scene = new Scene(pane);
-        Stage authorStage = new Stage();
-        authorStage.setScene(scene);
-        authorStage.show();
+         Main.authorStage = new Stage();
+        Main.authorStage.setScene(scene);
+        Main.authorStage.show();
     }
 }

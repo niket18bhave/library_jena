@@ -1,7 +1,7 @@
 package controller;
 
-public class Data {
-    public Data(String book, String author, String field, String location) {
+public class BookData {
+    public BookData(String book, String author, String field, String location) {
         this.book = book;
         this.author = author;
         this.field = field;

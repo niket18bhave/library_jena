@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AuthorPageController">
    <children>
-      <VBox fx:id="vBox" alignment="CENTER" layoutX="7.0" layoutY="61.0" prefHeight="279.0" prefWidth="513.0">
+      <VBox fx:id="vBox" alignment="CENTER" layoutX="7.0" layoutY="88.0" prefHeight="252.0" prefWidth="513.0">
          <children>
             <ListView fx:id="listView" prefHeight="200.0" prefWidth="268.0" />
          </children>
       </VBox>
+      <Button layoutX="241.0" layoutY="340.0" mnemonicParsing="false" onAction="#backAction" text="Back" />
+      <Text layoutX="238.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Books" />
    </children>
 </AnchorPane>
