@@ -1,12 +1,12 @@
-package controller;
+package model;
 
-public class SubjectData {
+public class SubjectDataModel {
 
     private String subject;
     private String predicate;
     private String object;
 
-    public SubjectData(String subject, String predicate, String object) {
+    public SubjectDataModel(String subject, String predicate, String object) {
         this.subject = subject;
         this.predicate = predicate;
         this.object = object;

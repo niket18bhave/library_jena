@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
+import model.BookDataModel;
+import model.FieldDataModel;
 import model.Main;
 
 import java.io.IOException;
@@ -19,19 +21,19 @@ public class FieldPageController implements Initializable {
     private VBox subField;
 
     @FXML
-    private ListView<FieldData> subFieldListView;
+    private ListView<FieldDataModel> subFieldListView;
 
     @FXML
     private VBox superField;
 
     @FXML
-    private ListView<FieldData> superFieldListView;
+    private ListView<FieldDataModel> superFieldListView;
 
     @FXML
-    private ListView<BookData> bookListView;
+    private ListView<BookDataModel> bookListView;
 
-    ObservableList<FieldData> fieldData = FXCollections.observableArrayList(displayFieldData());
-    ObservableList<BookData> bookData = FXCollections.observableArrayList(displayBookData());
+    ObservableList<FieldDataModel> fieldData = FXCollections.observableArrayList(displayFieldData());
+    ObservableList<BookDataModel> bookData = FXCollections.observableArrayList(displayBookData());
 
 
     @FXML
@@ -50,14 +52,14 @@ public class FieldPageController implements Initializable {
         bookListView.setItems(bookData);
     }
 
-    public FieldData displayFieldData(){
+    public FieldDataModel displayFieldData(){
 
-        return new FieldData("Machine Learning");
+        return new FieldDataModel("Machine Learning");
     }
 
-    public BookData displayBookData(){
+    public BookDataModel displayBookData(){
 
-        BookData bookData = new BookData("Book", "", "ML", "loc1");
+        BookDataModel bookData = new BookDataModel("Book", "", "ML", "loc1");
 
         return bookData;
 

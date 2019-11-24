@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
+import model.BookDataModel;
 import model.Main;
 
 import java.io.IOException;
@@ -19,9 +20,9 @@ public class AuthorPageController implements Initializable {
     private VBox vBox;
 
     @FXML
-    private ListView<BookData> listView;
+    private ListView<BookDataModel> listView;
 
-    ObservableList<BookData> bookData = FXCollections.observableArrayList(displayBookData());
+    ObservableList<BookDataModel> bookData = FXCollections.observableArrayList(displayBookData());
 
     @FXML
     void backAction(ActionEvent event) throws IOException {
@@ -39,9 +40,9 @@ public class AuthorPageController implements Initializable {
 
     }
 
-    public BookData displayBookData(){
+    public BookDataModel displayBookData(){
 
-        BookData bookData = new BookData("Book", "", "ML", "loc1");
+        BookDataModel bookData = new BookDataModel("Book", "", "ML", "loc1");
 
         return bookData;
 

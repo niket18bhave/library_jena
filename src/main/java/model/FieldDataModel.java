@@ -1,9 +1,9 @@
-package controller;
+package model;
 
-public class FieldData {
+public class FieldDataModel {
     private String filedname;
 
-    public FieldData(String filedname) {
+    public FieldDataModel(String filedname) {
         this.filedname = filedname;
     }
 
