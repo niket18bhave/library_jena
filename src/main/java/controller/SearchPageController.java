@@ -34,7 +34,10 @@ public class SearchPageController {
                 SearchPageController pageController = new SearchPageController();
                 pageController.openFieldWindow();
             } else {
-                System.out.println("Other User Interfaces are not implemented yet");
+                System.out.println("Searching for book");
+                Main.searchStage.close();
+                SearchPageController pageController = new SearchPageController();
+                pageController.openBookWindow();
             }
         }
     }
@@ -55,5 +58,14 @@ public class SearchPageController {
          Main.authorStage = new Stage();
         Main.authorStage.setScene(scene);
         Main.authorStage.show();
+    }
+
+    public void openBookWindow() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("BookPage.fxml"));
+        AnchorPane pane = loader.load();
+        Scene scene = new Scene(pane);
+        Main.bookStage = new Stage();
+        Main.bookStage.setScene(scene);
+        Main.bookStage.show();
     }
 }
