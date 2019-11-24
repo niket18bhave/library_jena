@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AuthorPageController">
+   <children>
+      <VBox fx:id="vBox" alignment="CENTER" layoutX="7.0" layoutY="61.0" prefHeight="279.0" prefWidth="513.0">
+         <children>
+            <ListView fx:id="listView" prefHeight="200.0" prefWidth="268.0" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

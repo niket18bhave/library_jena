@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="455.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FieldPageController">
+   <children>
+      <VBox fx:id="subfield" layoutX="36.0" layoutY="74.0" prefHeight="200.0" prefWidth="253.0">
+         <children>
+            <ListView fx:id="subfieldList" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+      <VBox fx:id="superfield" layoutX="334.0" layoutY="74.0" prefHeight="200.0" prefWidth="253.0">
+         <children>
+            <ListView fx:id="superfieldList" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </VBox>
+      <Text layoutX="36.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sub Field" />
+      <Text layoutX="334.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Super Field" />
+   </children>
+</AnchorPane>
