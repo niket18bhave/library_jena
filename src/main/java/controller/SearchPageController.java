@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -16,9 +17,14 @@ public class SearchPageController {
 
     @FXML
     private ToggleGroup User;
+    @FXML
+    private TextField searchTF;
 
+    public static String searchValue;
     @FXML
     void searchAction(ActionEvent event) throws IOException {
+
+        searchValue = searchTF.getText();
         RadioButton selectedButton = (RadioButton) User.getSelectedToggle();
 
         if(selectedButton != null) {

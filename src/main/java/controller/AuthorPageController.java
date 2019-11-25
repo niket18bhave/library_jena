@@ -25,37 +25,24 @@ public class AuthorPageController implements Initializable {
     @FXML
     private ListView<BookDataModel> listView;
 
-    ObservableList<BookDataModel> bookData = FXCollections.observableArrayList(displayBookData());
-
     @FXML
     void backAction(ActionEvent event) throws IOException {
 
         Main.authorStage.close();
         new Main().openSearchWindow();
-
-
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
-            List<BookDataModel> Booklist =FindBooksQuery.findAllBooks();
+
+            List<BookDataModel> Booklist =FindBooksQuery.findBookByAuthor(SearchPageController.searchValue);
             listView.getItems().addAll(Booklist);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-
-
     }
 
-    public BookDataModel displayBookData(){
-
-        BookDataModel bookData = new BookDataModel("Book", "", "ML", "loc1");
-
-
-        return bookData;
-
-    }
 }

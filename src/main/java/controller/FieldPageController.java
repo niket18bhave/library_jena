@@ -10,9 +10,11 @@ import javafx.scene.layout.VBox;
 import model.BookDataModel;
 import model.FieldDataModel;
 import model.Main;
+import query.FindBooksQuery;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class FieldPageController implements Initializable {
@@ -33,7 +35,7 @@ public class FieldPageController implements Initializable {
     private ListView<BookDataModel> bookListView;
 
     ObservableList<FieldDataModel> fieldData = FXCollections.observableArrayList(displayFieldData());
-    ObservableList<BookDataModel> bookData = FXCollections.observableArrayList(displayBookData());
+
 
 
     @FXML
@@ -47,9 +49,16 @@ public class FieldPageController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        subFieldListView.setItems(fieldData);
-        superFieldListView.setItems(fieldData);
-        bookListView.setItems(bookData);
+
+        try {
+
+                subFieldListView.setItems(fieldData);
+                superFieldListView.setItems(fieldData);
+                List<BookDataModel> Booklist = FindBooksQuery.findBookBySubject(SearchPageController.searchValue);
+                bookListView.getItems().addAll(Booklist);
+        } catch (Exception e) {
+                e.printStackTrace();
+        }
     }
 
     public FieldDataModel displayFieldData(){
@@ -57,13 +66,8 @@ public class FieldPageController implements Initializable {
         return new FieldDataModel("Machine Learning");
     }
 
-    public BookDataModel displayBookData(){
 
-        BookDataModel bookData = new BookDataModel("Book", "", "ML", "loc1");
-
-        return bookData;
 
     }
 
 
-}

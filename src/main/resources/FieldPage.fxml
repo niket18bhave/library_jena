@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="455.0" prefWidth="627.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FieldPageController">
+<AnchorPane prefHeight="455.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FieldPageController">
    <children>
       <VBox fx:id="subfield" layoutX="36.0" layoutY="74.0" prefHeight="131.0" prefWidth="253.0">
          <children>
-            <ListView fx:id="subFieldListView" prefHeight="126.0" prefWidth="253.0" />
+            <ListView fx:id="subFieldListView" prefHeight="126.0" prefWidth="238.0" />
          </children>
       </VBox>
       <VBox fx:id="superfield" layoutX="334.0" layoutY="74.0" prefHeight="131.0" prefWidth="253.0">
@@ -18,14 +18,14 @@
             <ListView fx:id="superFieldListView" prefHeight="127.0" prefWidth="253.0" />
          </children>
       </VBox>
-      <Text layoutX="36.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sub Field" />
-      <Text layoutX="334.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Super Field" />
+      <Text layoutX="119.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sub Field" />
+      <Text layoutX="426.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Super Field" />
       <Button layoutX="295.0" layoutY="414.0" mnemonicParsing="false" onAction="#backAction" text="Back" />
-      <VBox layoutX="42.0" layoutY="237.0" prefHeight="165.0" prefWidth="546.0">
+      <VBox layoutX="94.0" layoutY="243.0" prefHeight="165.0" prefWidth="459.0">
          <children>
-            <ListView fx:id="bookListView" prefHeight="200.0" prefWidth="200.0" />
+            <ListView fx:id="bookListView" prefHeight="165.0" prefWidth="506.0" />
          </children>
       </VBox>
-      <Text layoutX="272.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Books" />
+      <Text layoutX="272.0" layoutY="232.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Books for Subject" />
    </children>
 </AnchorPane>
