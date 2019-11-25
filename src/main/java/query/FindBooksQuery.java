@@ -8,7 +8,8 @@ import java.util.List;
 
 public class FindBooksQuery {
 
-    static String findAllBooks = "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
+    private static final String SPACE = " ";
+    private static String findAllBooks = "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
     "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
     "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
     "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -24,7 +25,7 @@ public class FindBooksQuery {
 
     " }}}";
 
-    static String findBookByTitle = "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
+    private static String findBookByTitle = "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -40,7 +41,7 @@ public class FindBooksQuery {
 
             " }}}";
 
-    static String findBooksByAuthor = "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
+    private static String findBooksByAuthorSingleName = "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -50,13 +51,29 @@ public class FindBooksQuery {
             "SERVICE <http://ec2-3-134-118-190.us-east-2.compute.amazonaws.com:3030/books/sparql> {" +
             "SELECT DISTINCT ?title ?creator ?subject " +
             "WHERE { " +
-            "?books dc:title ?title ." +
-            "?books dc:subject ?subject ." +
-            "?books dc:creator ?creator ." +
+            "?books dc:title ?title . " +
+            "?books dc:subject ?subject . " +
+            "?books dc:creator ?creator FILTER (contains(str(?creator), \"authorName\" )) . " +
 
             " }}}";
 
-    static String findBooksBySubject = "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
+    private static String findBooksByAuthorFirstAndLastName = "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
+            "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
+            "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
+            "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
+            "PREFIX book: <http://example.org/book/>" +
+            "PREFIX dc: <http://purl.org/dc/elements/1.1/>" +
+            "SELECT ?title ?subject ?creator { "+
+            "SERVICE <http://ec2-3-134-118-190.us-east-2.compute.amazonaws.com:3030/books/sparql> {" +
+            "SELECT DISTINCT ?title ?creator ?subject " +
+            "WHERE { " +
+            "?books dc:title ?title . " +
+            "?books dc:subject ?subject . " +
+            "?books dc:creator ?creator FILTER (contains(str(?creator), \"firstName\" ) && contains(str(?creator), \"lastName\" )) . " +
+
+            " }}}";
+
+    private static String findBooksBySubject = "PREFIX owl: <http://www.w3.org/2002/07/owl#>" +
             "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>" +
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" +
             "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" +
@@ -82,7 +99,15 @@ public class FindBooksQuery {
     }
 
     public static List<BookDataModel> findBookByAuthor(String authorName) throws Exception {
-        findBooksByAuthor.replace("authorName", authorName);
+        String names[] = authorName.split(SPACE);
+        String findBooksByAuthor;
+        if(names.length == 2) {
+            findBooksByAuthor = findBooksByAuthorFirstAndLastName.replace("firstName", names[0]);
+            findBooksByAuthor = findBooksByAuthor.replace("lastName", names[1]);
+        } else {
+            findBooksByAuthor = findBooksByAuthorSingleName.replace("authorName", authorName);
+        }
+
         return findBooksQuery(findBooksByAuthor);
     }
 
@@ -111,6 +136,7 @@ public class FindBooksQuery {
 
     public static void main(String args[]) throws Exception {
         FindBooksQuery controller = new FindBooksQuery();
-        controller.findAllBooks();
+        List<BookDataModel> bookDataModelList = FindBooksQuery.findBookByAuthor("Nicholas Rescher");
+        System.out.println(bookDataModelList);
     }
 }
