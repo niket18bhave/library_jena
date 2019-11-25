@@ -8,6 +8,9 @@ public class BookDataModel {
         this.location = location;
     }
 
+    public BookDataModel() {
+    }
+
     private String book;
     private String author;
     private String field;

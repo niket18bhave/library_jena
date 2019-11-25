@@ -1,23 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BookPageController">
    <children>
-      <HBox layoutX="119.0" layoutY="100.0" prefHeight="100.0" prefWidth="384.0">
+      <Button layoutX="276.0" layoutY="316.0" mnemonicParsing="false" onAction="#backAction" text="Back" />
+      <VBox layoutX="192.0" layoutY="80.0" prefHeight="212.0" prefWidth="217.0">
          <children>
-            <TableView fx:id="tableView" prefHeight="100.0" prefWidth="298.0">
-              <columns>
-                <TableColumn prefWidth="75.0" text="Aisle" />
-                <TableColumn prefWidth="75.0" text="Floor" />
-                  <TableColumn prefWidth="75.0" text="Field" />
-                  <TableColumn prefWidth="75.0" text="Details" />
-              </columns>
-            </TableView>
+            <ListView fx:id="listView" prefHeight="272.0" prefWidth="217.0" />
          </children>
-      </HBox>
+      </VBox>
+      <Text layoutX="271.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book Info" />
    </children>
 </AnchorPane>

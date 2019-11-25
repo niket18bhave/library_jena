@@ -9,9 +9,12 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 import model.BookDataModel;
 import model.Main;
+import query.FindBooksQuery;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLOutput;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class AuthorPageController implements Initializable {
@@ -36,13 +39,21 @@ public class AuthorPageController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        listView.setItems(bookData);
+        try {
+            List<BookDataModel> Booklist =FindBooksQuery.findAllBooks();
+            listView.getItems().addAll(Booklist);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
 
     }
 
     public BookDataModel displayBookData(){
 
         BookDataModel bookData = new BookDataModel("Book", "", "ML", "loc1");
+
 
         return bookData;
 
