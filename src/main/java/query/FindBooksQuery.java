@@ -35,7 +35,7 @@ public class FindBooksQuery {
             "SERVICE <http://ec2-3-134-118-190.us-east-2.compute.amazonaws.com:3030/books/sparql> {" +
             "SELECT DISTINCT ?title ?creator ?subject " +
             "WHERE { " +
-            "?books dc:title ?title ." +
+            "?books dc:title ?title FILTER (?title = \"bookTitle\") ." +
             "?books dc:subject ?subject ." +
             "?books dc:creator ?creator ." +
 
@@ -84,7 +84,7 @@ public class FindBooksQuery {
             "SELECT DISTINCT ?title ?creator ?subject " +
             "WHERE { " +
             "?books dc:title ?title ." +
-            "?books dc:subject ?subject ." +
+            "?books dc:subject ?subject FILTER (?subject = \"subjectName\") ." +
             "?books dc:creator ?creator ." +
 
             " }}}";
@@ -94,8 +94,8 @@ public class FindBooksQuery {
     }
 
     public static List<BookDataModel> findBookByTitle(String bookTitle) throws Exception {
-        findBookByTitle.replace("bookTitle", bookTitle);
-        return findBooksQuery(findBookByTitle);
+        String findByTitle = findBookByTitle.replace("bookTitle", bookTitle);
+        return findBooksQuery(findByTitle);
     }
 
     public static List<BookDataModel> findBookByAuthor(String authorName) throws Exception {
@@ -112,8 +112,8 @@ public class FindBooksQuery {
     }
 
     public static List<BookDataModel> findBookBySubject(String subjectName) throws Exception {
-        findBooksBySubject.replace("subjectName", subjectName);
-        return findBooksQuery(findBooksBySubject);
+        String findBookBySubject = findBooksBySubject.replace("subjectName", subjectName);
+        return findBooksQuery(findBookBySubject);
     }
 
     public static List<BookDataModel> findBooksQuery(String queryParam) throws Exception {
@@ -128,7 +128,6 @@ public class FindBooksQuery {
 
             BookDataModel bookDataModel = new BookDataModel(title, creator, subject, "");
             bookDataModelList.add(bookDataModel);
-            System.out.println(bookDataModel);
         }
 
         return bookDataModelList;
@@ -137,6 +136,12 @@ public class FindBooksQuery {
     public static void main(String args[]) throws Exception {
         FindBooksQuery controller = new FindBooksQuery();
         List<BookDataModel> bookDataModelList = FindBooksQuery.findBookByAuthor("Nicholas Rescher");
+        System.out.println(bookDataModelList);
+
+        bookDataModelList = FindBooksQuery.findBookByTitle("Many-valued logic");
+        System.out.println(bookDataModelList);
+
+        bookDataModelList = FindBooksQuery.findBookBySubject("Multivalued Logic");
         System.out.println(bookDataModelList);
     }
 }
