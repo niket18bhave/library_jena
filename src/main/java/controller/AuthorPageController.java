@@ -40,7 +40,8 @@ public class AuthorPageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         try {
-            List<BookDataModel> Booklist =FindBooksQuery.findAllBooks();
+
+            List<BookDataModel> Booklist =FindBooksQuery.findBookByAuthor(SearchPageController.searchValue);
             listView.getItems().addAll(Booklist);
         } catch (Exception e) {
             e.printStackTrace();
