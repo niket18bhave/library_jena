@@ -10,6 +10,7 @@ import javafx.scene.control.TableView;
 import model.BookDataModel;
 import model.LocationDataModel;
 import model.Main;
+import query.FindBooksQuery;
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,31 +21,26 @@ public class BookPageController implements Initializable {
 
 
     @FXML
-    private ListView<LocationDataModel> listView;
+    private ListView<BookDataModel> listView;
 
-    ObservableList<LocationDataModel> locationData = FXCollections.observableArrayList(displayLocationData());
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        listView.setItems(locationData);
+        try {
+            List<BookDataModel>  Booklist = FindBooksQuery.findBookByTitle(SearchPageController.searchValue);
+            listView.getItems().addAll(Booklist);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
     }
-
     @FXML
     void backAction(ActionEvent event) throws IOException {
 
         Main.bookStage.close();
         new Main().openSearchWindow();
 
-
     }
 
-    public LocationDataModel displayLocationData(){
-
-        LocationDataModel locationData = new LocationDataModel("Aisle 2","4th Floor","ML","Abcde");
-
-        return locationData;
-
-    }
 }

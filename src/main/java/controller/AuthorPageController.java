@@ -25,15 +25,11 @@ public class AuthorPageController implements Initializable {
     @FXML
     private ListView<BookDataModel> listView;
 
-    ObservableList<BookDataModel> bookData = FXCollections.observableArrayList(displayBookData());
-
     @FXML
     void backAction(ActionEvent event) throws IOException {
 
         Main.authorStage.close();
         new Main().openSearchWindow();
-
-
     }
 
     @Override
@@ -47,16 +43,6 @@ public class AuthorPageController implements Initializable {
             e.printStackTrace();
         }
 
-
-
     }
 
-    public BookDataModel displayBookData(){
-
-        BookDataModel bookData = new BookDataModel("Book", "", "ML", "loc1");
-
-
-        return bookData;
-
-    }
 }
