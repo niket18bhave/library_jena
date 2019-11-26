@@ -35,7 +35,7 @@ public class FieldPageController implements Initializable {
     private ListView<BookDataModel> bookListView;
 
     ObservableList<FieldDataModel> fieldData = FXCollections.observableArrayList(displayFieldData());
-
+    ObservableList<FieldDataModel> fieldData2 = FXCollections.observableArrayList(displayFieldData2());
 
 
     @FXML
@@ -53,7 +53,7 @@ public class FieldPageController implements Initializable {
         try {
 
                 subFieldListView.setItems(fieldData);
-                superFieldListView.setItems(fieldData);
+                superFieldListView.setItems(fieldData2);
                 List<BookDataModel> Booklist = FindBooksQuery.findBookBySubject(SearchPageController.searchValue);
                 bookListView.getItems().addAll(Booklist);
         } catch (Exception e) {
@@ -63,9 +63,13 @@ public class FieldPageController implements Initializable {
 
     public FieldDataModel displayFieldData(){
 
-        return new FieldDataModel("Machine Learning");
+        return new FieldDataModel("Matrix Semantics");
     }
 
+    public FieldDataModel displayFieldData2(){
+
+        return new FieldDataModel("Propositional Calculus");
+    }
 
 
     }
