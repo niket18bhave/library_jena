@@ -28,7 +28,7 @@ public class BookPageController implements Initializable {
 
         try {
             List<BookDataModel>  Booklist = FindBooksQuery.findBookByTitle(SearchPageController.searchValue);
-            listView.getItems().addAll(Booklist);
+            listView.getItems().addAll(Booklist.get(0));
         } catch (Exception e) {
             e.printStackTrace();
         }
