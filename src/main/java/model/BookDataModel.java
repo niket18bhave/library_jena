@@ -16,6 +16,15 @@ public class BookDataModel {
     private String author;
     private String field;
     private String location;
+
+    public String getSuperTopic() {
+        return superTopic;
+    }
+
+    public void setSuperTopic(String superTopic) {
+        this.superTopic = superTopic;
+    }
+
     private String superTopic;
 
     public String getBook() {
@@ -52,6 +61,7 @@ public class BookDataModel {
 
     @Override
     public String toString() {
-        return "Book: " + book + "|| Author: " + author + "|| Field: " + field + "|| Location: " + location;
+        return "Book: " + book + "|| Author: " + author + "|| Field: " + field + "|| Location: " +
+                location + "|| SuperTopic: "+ superTopic;
     }
 }

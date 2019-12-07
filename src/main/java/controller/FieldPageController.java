@@ -14,6 +14,7 @@ import query.FindBooksQuery;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -23,13 +24,13 @@ public class FieldPageController implements Initializable {
     private VBox subField;
 
     @FXML
-    private ListView<FieldDataModel> subFieldListView;
+    private ListView<String> subFieldListView;
 
     @FXML
     private VBox superField;
 
     @FXML
-    private ListView<FieldDataModel> superFieldListView;
+    private ListView<String> superFieldListView;
 
     @FXML
     private ListView<BookDataModel> bookListView;
@@ -52,10 +53,17 @@ public class FieldPageController implements Initializable {
 
         try {
 
-                subFieldListView.setItems(fieldData);
-                superFieldListView.setItems(fieldData2);
+
                 List<BookDataModel> Booklist = FindBooksQuery.findBookBySubject(SearchPageController.searchValue);
                 bookListView.getItems().addAll(Booklist);
+                List<String> superfielddata = new ArrayList<String>();
+                List<String> subfielddata = new ArrayList<String>();
+                for(int i=0;i<Booklist.size();i++) {
+                    superfielddata.add(FindBooksQuery.findBookBySubject(SearchPageController.searchValue).get(0).getSuperTopic());
+                    superfielddata.add(FindBooksQuery.findBookBySubject(SearchPageController.searchValue).get(0).getSuperTopic());
+                }
+
+                superFieldListView.getItems().addAll(superfielddata);
         } catch (Exception e) {
                 e.printStackTrace();
         }
