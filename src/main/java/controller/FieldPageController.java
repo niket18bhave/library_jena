@@ -10,8 +10,11 @@ import javafx.scene.layout.VBox;
 import model.BookDataModel;
 import model.FieldDataModel;
 import model.Main;
+import model.Subfield;
 import query.FindBooksQuery;
+import query.FindSubfieldQuery;
 
+import java.awt.print.Book;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -58,12 +61,19 @@ public class FieldPageController implements Initializable {
                 bookListView.getItems().addAll(Booklist);
                 List<String> superfielddata = new ArrayList<String>();
                 List<String> subfielddata = new ArrayList<String>();
+                String field = Booklist.get(0).getField();
+                List<Subfield> subfieldList = FindSubfieldQuery.findSubFieldQuery(field);
                 for(int i=0;i<Booklist.size();i++) {
                     superfielddata.add(FindBooksQuery.findBookBySubject(SearchPageController.searchValue).get(0).getSuperTopic());
-                    superfielddata.add(FindBooksQuery.findBookBySubject(SearchPageController.searchValue).get(0).getSuperTopic());
+                    break;
+                }
+
+                for(Subfield sub : subfieldList) {
+                    subfielddata.add(sub.getSubField());
                 }
 
                 superFieldListView.getItems().addAll(superfielddata);
+                subFieldListView.getItems().addAll(subfielddata);
         } catch (Exception e) {
                 e.printStackTrace();
         }
