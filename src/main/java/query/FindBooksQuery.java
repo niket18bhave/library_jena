@@ -38,7 +38,7 @@ public class FindBooksQuery {
             "            WHERE {\n" +
             "                  ?books dc:creator ?creator ;\n" +
             "      \t\t\t\t\t dc:subject ?subject ;\n" +
-            "                  dc:title ?title FILTER (?title = \"bookTitle\") .\n" +
+            "                  dc:title ?title FILTER (contains(str(?title), \"bookTitle\" )) .\n" +
             "            }\n" +
             "    \t\tLIMIt 10\n" +
             "      }\n" +
@@ -188,7 +188,7 @@ public class FindBooksQuery {
         List<BookDataModel> bookDataModelList = FindBooksQuery.findBookByAuthor("Nicholas");
         System.out.println(bookDataModelList);
 
-        bookDataModelList = FindBooksQuery.findBookByTitle("Many-valued logic");
+        bookDataModelList = FindBooksQuery.findBookByTitle("Machine learn");
         System.out.println(bookDataModelList);
 
         bookDataModelList = FindBooksQuery.findBookBySubject("Multivalued Logic");
