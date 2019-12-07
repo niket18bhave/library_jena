@@ -1,11 +1,12 @@
 package model;
 
 public class BookDataModel {
-    public BookDataModel(String book, String author, String field, String location) {
+    public BookDataModel(String book, String author, String field, String location, String superTopic) {
         this.book = book;
         this.author = author;
         this.field = field;
         this.location = location;
+        this.superTopic = superTopic;
     }
 
     public BookDataModel() {
@@ -15,6 +16,7 @@ public class BookDataModel {
     private String author;
     private String field;
     private String location;
+    private String superTopic;
 
     public String getBook() {
         return book;

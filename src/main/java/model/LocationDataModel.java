@@ -14,6 +14,11 @@ public class LocationDataModel {
         Details = details;
     }
 
+    public LocationDataModel(String aisle, String field) {
+        Aisle = aisle;
+        Field = field;
+    }
+
     public String getAisle() {
         return Aisle;
     }
