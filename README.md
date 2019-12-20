@@ -1,7 +1,10 @@
 # Linked Data Application in Library                                                                       
 
-●	Developed an Intelligent Library Management System by implementing an array of Semantic Web Techniques: Data Collection and Pre-processing, Conversion, Ontology creation, Linking and SPARQL Query.
-●	Built a Book Recommender System: Based on similarity scores between books. Linked the bibliographic datasets of Harvard Library and the CSO. The Application was built using JavaFX with relevant data being extracted by federated querying the Fuseki Servers hosted on three different Amazon EC2 instances
+-	Developed an Intelligent Library Management System by implementing an array of Semantic Web Techniques:
+Data Collection and Pre-processing, Conversion, Ontology creation, Linking and SPARQL Query.
+-	Built a Book Recommender System: Based on similarity scores between books. Linked the bibliographic datasets
+of Harvard Library and the CSO. The Application was built using JavaFX with relevant data being extracted
+by federated querying the Fuseki Servers hosted on three different Amazon EC2 instances
 
 
 ## Getting Started
@@ -76,7 +79,7 @@ cd app-mathx/out/artifacts/app_mathx_jar/
 ```
 java -jar --module-path /path/to/javafx/lib --add-modules javafx.controls,javafx.fxml app-mathx.jar
 ```
-***You may refer to another README file at https://github.com/SER515-Fall2019-Team4/app-mathx/tree/master/home/main/src/controllers for more information about the project structure***
+
 
 ### Authors
 * **Manas Mahapatra**
