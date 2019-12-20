@@ -31,7 +31,7 @@ A step by step series of examples that tell you how to get a development env run
 
 - Clone the project
 ```
-git clone https://github.com/SER515-Fall2019-Team4/app-mathx.git
+git clone https://github.com/vinrar/library_jena.git
 ```
 - Open the project in IntelliJ
 
