@@ -12,7 +12,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 You will need to install OpenJDK 11 and OpenJavaFX 11 in order to run the software.
-You will need to add firebase jar files to your library
 
 **OpenJavaFX 11**
 - Download OpenJavaFX 11 from [Gluon Official Website](https://gluonhq.com/products/javafx/).
